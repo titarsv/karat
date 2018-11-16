@@ -1,0 +1,14 @@
+.wpbc_booking_form_structure.wpbc_form_right{
+  padding: 30px 15px;
+}
+.wpbc_booking_form_structure.wpbc_form_right .wpbc_structure_calendar{
+  width: calc(100% - 288px);
+}
+.bk_calendar_frame + div{
+  display: none;
+}
+.datepick-inline .date2approve{
+  background-color: #d7d7d7 !important;
+  color: #000 !important;
+  text-shadow: 0 1px 0 #000 !important;
+}

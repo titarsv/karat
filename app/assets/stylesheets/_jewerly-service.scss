@@ -1,0 +1,116 @@
+.back-login__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0 25px;
+}
+
+.back-btn{
+    position: relative;
+    color: #7795A3;
+    font-family: 'Overlock', cursive;
+    display: flex;
+    align-items: center;
+    img{
+        width: 20px;
+        transform: rotate(180deg);
+    }
+    &:hover{
+        text-decoration: none;
+        color: #7795A3;
+    }
+}
+
+.services{
+    .book-online__item-description{
+        position: static;
+        text-align: center;
+        padding-top: 0;
+        p{
+            font-size: 20px;
+            margin-bottom: 0;
+            @include bp (sm){
+                padding-top: 0;
+            }
+        }
+    }
+    .book-btn__wrp{
+        margin-top: 20px;
+        margin-bottom: 55px;
+        @include bp (sm){
+            margin-bottom: 0;
+        }
+    }
+}
+
+.services__title{
+    font-size: 30px;
+    line-height: 42px;
+    text-align: center;
+    font-family: 'Overlock', cursive;
+    @include bp (sm){
+        font-size: 22px;
+    }
+}
+
+.services__img{
+    margin-bottom: 68px;
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    @include bp (md){
+        height: 450px;
+    }
+    @include bp (sm){
+        height: 200px;
+        padding:  15px;
+        margin-bottom: 20px;
+    }
+}
+
+.services__text-container{
+    padding: 50px 100px;
+    .text{
+        font-family: 'Overlock', cursive;
+        color: #000;
+        font-size: 18px;
+    }
+    .title{
+        font-family: 'Overlock', cursive;
+        color: #000;
+        font-size: 22px;
+        padding-top: 30px;
+        padding-bottom: 15px;
+        @include bp (sm){
+            padding-top: 15px;
+        }
+    }
+    .underline{
+        border-bottom: 1px solid #7795A3;
+    }
+    .book-online__item-description{
+        position: static;
+        text-align: left;
+        padding: 0;
+        padding-bottom: 25px;
+        .text{
+            padding-bottom: 10px;
+        }
+        p{
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        @include bp (sm){
+            padding-bottom: 15px;
+        }
+    }
+    .book-btn__wrp{
+        margin-top: 15px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        text-align: left;
+    }
+    @include bp (sm){
+        padding: 20px;
+    }
+}

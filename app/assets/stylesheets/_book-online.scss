@@ -1,0 +1,342 @@
+.book-online__container{
+    padding: 50px 0;
+    background: #fff;
+}
+
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 25px 0;
+    .far.fa-user{
+        color: #000;
+        font-size: 14px;
+    }
+    a{
+        font-size: 14px;
+        color: #000;
+        padding-left: 2px;
+    }
+}
+
+.book-online__title{
+    font-size: 26px;
+    line-height: 39px;
+    text-align: center;
+    padding-bottom: 37px;
+    font-family: 'Overlock', cursive;
+    @include bp (sm){
+        font-size: 22px;
+    }
+}
+
+.book-online__items{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    @include bp (md){
+        flex-wrap: wrap;
+    }
+}
+
+.book-online__item{
+    margin: 0 10px;
+    width: calc( 33% - 10px);
+    position: relative;
+    border: 1px solid #8B8A8A;
+    overflow: hidden;
+  max-width: 300px;
+    .img{
+        width: 100%;
+        height: 200px;
+        background: url('../images/item.jpg') center no-repeat;
+        background-size: cover;
+        transition: all .3s;
+    }
+    &:hover{
+        .img{
+            transform: scale(1.1);
+
+        }
+        .book-online__item-description{
+            top: 0px;
+        }
+    }
+    @include bp (md){
+        width: calc( 50% - 10px);
+    }
+    @include bp (xs){
+        width: calc( 100% - 10px);
+    }
+}
+
+.book-online__item-description{
+    position: absolute;
+    z-index: 1;
+    padding: 0 15px;
+    padding-top: 30px;
+    background-color: #fff;
+    transition: all .5s;
+    top: 200px;
+    .title{
+        padding-bottom: 15px;
+        color: #000;
+        font-family: 'Overlock', cursive;
+        font-size: 20px;
+        display: block;
+    }
+    p{
+        padding-bottom: 10px;
+        color: #000;
+        font-family: 'Overlock', cursive;
+        font-size: 16px;
+        padding-top: 10px;
+    }
+    .learn-more{
+        color: #000;
+        font-family: 'Overlock', cursive;
+        font-size: 16px;
+        display: block;
+        text-decoration: underline;
+    }
+}
+
+.book-btn__wrp{
+    position: relative;
+    z-index: 2;
+    padding-bottom: 40px;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 125px;
+}
+
+.book-btn{
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+    outline: none;
+    color: #FFFFFF;
+    background-color: #7795A3;
+    border: 1px solid#7795A3;
+    height: 43px;
+    padding: 6px 20px;
+    font-family: 'Overlock', cursive;
+    &:hover{
+        background-image: linear-gradient(0deg,hsla(0,0%,93%,.1),hsla(0,0%,93%,.1));
+        color: #fff;
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    &:visited, &:active{
+        color: #FFFFFF;
+    }
+}
+
+//  LOG IN POPUP
+
+.mfp-container{
+    padding: 0;
+}
+
+.login-popup{
+    background: #fff;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mfp-close{
+        width: 35px;
+        height: 35px;
+        opacity: 1;
+        right: 50px;
+        top: 50px;
+        background: url('../images/icon/delete.png') center no-repeat;
+        background-size: contain;
+        @include bp (xs){
+            right: 30px;
+            top: 30px;
+        }
+    }
+    @include bp (xs){
+        padding: 30px;
+    }
+}
+
+.login-popup__title{
+    font-family: 'Spinnaker', sans-serif;
+    line-height: .8em;
+    padding-top: 20px;
+    font-weight: normal;
+    font-size: 56px;
+    text-align: center;
+    padding-bottom: 80px;
+    color: #000000;
+    @include bp (sm){
+        padding: 10px 40px;
+        font-size: 35px;
+    }
+}
+
+#forgot-password-popup{
+    .login-popup__title{
+        padding-bottom: 0px;
+        @include bp (sm){
+            padding: 0;
+        }
+    }
+}
+
+.login-popup__subtitle{
+    font-family: 'HelveticaNeue';
+    margin-top: 24px;
+    padding-bottom: 80px;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+}
+
+.login-popup__form-input{
+    width: 100%;
+    outline: none;
+    background: #fff;
+    height: 48px;
+    font-size: 14px;
+    font-family: 'HelveticaNeue';
+    color: #000000;
+    line-height: 14px;
+    text-align: left;
+    padding: 0 12px;
+    margin-bottom: 20px;
+    @include bp (sm){
+        border: none;
+        border-bottom: 1px solid #000;
+        padding: 10px 0;
+    }
+}
+
+.login-popup__form-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+}
+
+.custom-checkbox{
+    display: none;
+}
+
+.custom-label{
+    position: relative;
+    font-size: 14px;
+    line-height: 14px;
+    color: #000;
+    font-family: 'HelveticaNeue';
+    padding-left: 25px;
+    margin-right: 5px;
+    margin-bottom: 0;
+    cursor: pointer;
+    &::before{
+        content: '';
+        width: 13px;
+        height: 13px;
+        border: 1px solid #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    &::placeholder{
+        color: #000;
+        font-family: 'HelveticaNeue';
+    }
+}
+
+.custom-checkbox:checked + .custom-label::before{
+    background: url('../images/check.png') center no-repeat;
+    padding: 3px;
+    background-size: contain;
+}
+
+.forget-password-link{
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'HelveticaNeueBold';
+    font-size: 14px;
+    line-height: 14px;
+    @include bp (sm){
+        text-align: center;
+        margin-top: 20px;
+        display: block;
+    }
+}
+
+.login-popup__form-btn{
+    background-color: rgba(199, 181, 111, 1);
+    border: solid rgba(199, 181, 111, 1) 2px;
+    cursor: pointer;
+    transition: border-color 0.4s ease 0s, background-color 0.4s ease 0s;
+    font-family: 'Overlock', cursive;
+    transition: color 0.4s ease 0s;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    &:hover{
+        background-color: rgba(227, 217, 177, 1);
+        border-color: rgba(227, 217, 177, 1);
+    }
+}
+
+.login-popup__form-notice{
+    text-align: center;
+    margin-top: 20px;
+    color: #000;
+    &.email{
+        text-decoration: underline;
+        display: block;
+        margin-top: 10px;
+    }
+    @include bp (sm){
+        .forget-password-link{
+            display: initial;
+        }
+    }
+}
+
+.vertical-line{
+    position: relative;
+    &:after{
+        content: '';
+        position: absolute;
+        top: -21px;
+        right: 50%;
+        width: 1px;
+        height: 290px;
+        background: #8B8A8A;
+    }
+}
+
+.login-with{
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+    font-family: Helvetica;
+    font-size: 14px;
+    line-height: 48px;
+    margin-bottom: 24px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    &.facebook{
+        background-color: #3b5998;
+    }
+    &.google{
+        background-color: #e53935;
+    }
+}

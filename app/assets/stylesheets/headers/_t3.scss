@@ -1,0 +1,69 @@
+.header-t3{
+  padding-top: 5px;
+  color: $black;
+
+  .row{
+    display: flex;
+    align-items: center;
+
+    > div{
+      position: relative;
+    }
+  }
+
+  .header-logo{
+    @include bp(sm){
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+
+  .header-slogan{
+    padding-top: 10px;
+    position: relative;
+    @include bp(sm){
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+
+  .header-slogan__item{
+    margin-bottom: 0;
+    margin-left: 60px;
+    font-size: 1.2em;
+    @include bp(sm){
+      margin-left: 0;
+    }
+  }
+
+  .header-phone{
+    text-align: right;
+    padding-top: 5px;
+    position: relative;
+    @include bp(sm){
+      padding: 10px 0;
+      text-align: center;
+    }
+  }
+
+  .header-phone__text{
+    font-size: 1.3em;
+    margin-bottom: 0;
+    @include bp(md){
+      font-size: 1em;
+    }
+  }
+
+  .header-phone__link{
+    font-family: 'HelveticaBold', sans-serif;
+    font-size: 1.7em;
+    color: $accent;
+    @include border-hover(3px, $accent);
+    @include bp(md){
+      font-size: 1.4em;
+    }
+    &:hover{
+      color: $accent;
+    }
+  }
+}

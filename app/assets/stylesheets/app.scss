@@ -1,0 +1,62 @@
+@import 'variables';
+@import 'vendor';
+@import 'fonts';
+@import 'mixin';
+
+html, body{
+  min-width: 320px;
+}
+a:visited, a:active{
+  text-decoration: none;
+}
+.main-wrapper{
+  min-height: calc(100vh - 128px);
+}
+
+.swal2-container.swal2-shown{
+    z-index: 10001;
+}
+
+// Шапка
+@import 'header';
+
+// 1-й экран
+@import 'sections';
+@import 'collection';
+@import 'contact';
+@import 'book-online';
+@import 'jewerly-service';
+@import 'blog';
+@import 'become-a-member';
+@import 'admin-account';
+@import 'products-page';
+@import 'product';
+@import 'article';
+@import 'Schedule-Online';
+
+// Подвал
+@import 'footer';
+
+// Вспомогательный фон
+//body{
+//   background: center top url(../images/landing_new_photo.jpg) no-repeat #000;
+//  min-height: 100vh;
+//
+//  background-size: 480px auto;
+//
+//  @media screen and (min-width: 480px){
+//    background-size: 768px auto;
+//  }
+//
+//  @media screen and (min-width: 768px){
+//    background-size: 992px auto;
+//  }
+//
+//  @media screen and (min-width: 992px){
+//    background-size: 1200px auto;
+//  }
+//
+//  @media screen and (min-width: 1200px){
+//    background-size: 1920px auto;
+//  }
+//}

@@ -1,0 +1,205 @@
+.contact-section{
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 10px 10px 100px 3px;
+}
+
+.contact-section__title{
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+    font-family: Spinnaker,sans-serif;
+    font-size: 33px;
+    margin-bottom: 25px;
+}
+
+.contact-section__paragraph{
+    color: #504F4F;
+    font-size: 18px;
+    font-family: 'Overlock', cursive;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.phone-schedule__wrp{
+    display: flex;
+    margin-left: 95px;
+    margin-top: 20px;
+    justify-content: space-between;
+    font-family: Spinnaker,sans-serif;
+    color: #504F4F;
+    p{
+        font-size: 24px;
+        @include bp (sm){
+            font-size: 20px;
+            margin: 0;
+        }
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        font-size: 18px;
+        padding: 0;
+        @include bp (sm){
+            font-size: 16px;
+        }
+    }
+    @include bp (sm){
+        flex-direction: column;
+        margin-left: 0;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+}
+
+.location__container{
+    .location__title{
+        text-align: center;
+        color: #594f59;
+        font-size: 24px;
+        font-family: Spinnaker,sans-serif;
+        margin-bottom: 20px;
+
+    }
+    .location__subtitle{
+        font-family: spinnaker, sans-serif;
+        font-weight: bold;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+}
+
+.form-map__container{
+    display: flex;
+    align-items: center;
+    @include bp (sm){
+        flex-direction: column;
+    }
+}
+
+.contant-form{
+    width: 50%;
+    padding-right: 10px;
+    input, textarea{
+        padding: 5px;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        color: #000000;
+        margin: 0 0 15px 0;
+        width: 100%;
+        transition: 0.5s ease all;
+        background-color: transparent;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Baskerville Italic';
+        resize: none;
+        &::placeholder{
+            font-family: 'Baskerville Italic';
+            color: #000;
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+    .first, .second{
+        display: inline-block;
+        width: calc(45% - 4px);
+        @include bp (md){
+            width: 100%;
+        }
+        @include bp (sm){
+            width: calc(45% - 4px);
+        }
+    }
+    .second{
+        margin-left: 10%;
+        @include bp (md){
+            margin-left: 0;
+        }
+        @include bp (sm){
+            margin-left: 10%;
+        }
+    }
+    button{
+        border: none;
+        box-shadow: 0;
+        outline: none;
+        background: transparent;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Baskerville Italic';
+        margin: 0;
+    }
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.map-wrp{
+    width: 50%;
+    height: 250px;
+    padding-left: 10px;
+    @include bp (sm){
+        width: 100%;
+    }
+}
+
+.popup {
+    width: 630px;
+    background-color: #fff;
+    position: relative;
+    margin: 0 auto;
+    padding: 70px 130px;
+}
+
+.popup-title{
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
+
+.popup-form{
+    width: 100%;
+    margin-top: 30px;
+}
+
+.popup-form__input-wrapper{
+    width: 100%;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.popup-form__input{
+    width: 100%;
+    height: 42px;
+    line-height: 40px;
+    border-radius: 25px;
+    border: 1px solid #cdcdcd;
+    text-align: center;
+    font-size: 16px;
+    &::placeholder{
+        color: #616161;
+        font-size: 16px;
+    }
+}
+
+.popup-form__btn{
+    width: 100%;
+}
+.popup .btn {
+    background-color: #cccccc;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    text-align: center;
+    border: none;
+    border-radius: 25px;
+    color: #000;
+    font-size: 18px;
+    font-family: "Roboto-Light", sans-serif;
+    text-decoration: none;
+}
+.product-template-default .mfp-wrap{
+    z-index: 10001;
+}

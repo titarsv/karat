@@ -1,0 +1,95 @@
+.collection__container{
+    margin-top: 40px;
+    @include bp (sm){
+        background: #fff;
+    }
+}
+
+.collection_row{
+    display: flex;
+    align-items: center;
+    height: 300px;
+    margin: 12px 0;
+    position: relative;
+    .right{
+        height: 100%;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;    
+        align-items: center;
+        padding: 15px;
+        background-color: rgba(128, 62, 101, 0.77);
+        span{
+            margin-bottom: 30px;
+            letter-spacing: 0.15em;
+            font-size: 25px;
+            color: #EAC2DA;
+            line-height: 0.9em;
+            text-align: center;
+            font-family: 'HelveticaNeueBold';
+            @include bp (sm){
+                margin-bottom: 0;
+                font-size: 20px;
+            }
+        }
+        .common-btn{
+            color: #803E65;
+            @include bp (md){
+                padding: 7px 2px;
+                width: initial;
+                text-align: center;
+                font-size: 16px;
+            }
+            @include bp (sm){
+                display: none;
+            }
+        }
+        @include bp (md){
+            width: 250px;
+        }
+        @include bp (sm){
+            width: 100%;
+            height: initial;
+            background-color: transparent;
+            padding: 0;
+        }
+    }
+    .left{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: #fff;
+        padding: 0 30px;
+        height: 100%;
+        width: calc(100% - 300px);
+        img{
+            width: 153px;
+            height: 153px;
+            @include bp (md){
+                width: 100px;
+                height: 100px;
+            }
+            @include bp (xs){
+                width: 70px;
+                height: 70px;
+            }
+        }
+        @include bp (md){
+            width: calc(100% - 250px);
+        }
+        @include bp (sm){
+            width: 100%;
+            height: initial;
+            padding: 10px 0;
+        }
+    }
+    @include bp (md){
+        height: 250px;
+    }
+    @include bp (sm){
+        height: initial;
+        flex-direction: column;
+        margin: 20px 0;
+    }
+}

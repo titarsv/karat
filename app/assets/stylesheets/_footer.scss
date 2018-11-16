@@ -1,0 +1,39 @@
+.footer{
+    background-color: rgba(47, 46, 46, 1);
+    border-top: 0px solid rgba(160, 160, 159, 1);
+    border-bottom: 0px solid rgba(160, 160, 159, 1);
+    position: relative;
+    padding: 30px 0;
+    .social-links{
+        text-align: center;
+        img{
+            width: 25px;
+            height: 25px;
+            margin-right: 12px;
+        }
+        a:nth-child(3){
+            img{
+                margin: 0;
+            }
+        }
+    }
+    p{
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        line-height: 28px;
+        font-family: 'Overlock', cursive;
+        margin: 5px 0 10px;
+    }
+    .copy-right{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: #8B8A8A;
+        text-align: center; 
+        font-size: 12px;
+        font-family: 'Overlock', cursive;
+        width: 100%;
+        margin: 0;
+    }
+}

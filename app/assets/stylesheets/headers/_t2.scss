@@ -1,0 +1,58 @@
+.header-t2{
+  .row{
+    display: flex;
+    align-items: center;
+
+    > div{
+      position: relative;
+    }
+  }
+
+  text-align: center;
+  padding-bottom: 33px;
+  .slogan{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+    text-align: left;
+    @include bp(md){
+      text-align: center;
+    }
+  }
+
+  .logo{
+    max-height: 100px;
+    max-width: 100%;
+  }
+
+  .addr{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 -5px 0;
+    display: block;
+    @include bp(md){
+      text-align: center;
+    }
+    i{
+      color: #E6323E;
+      font-size: 30px;
+      top: 7px;
+      position: relative;
+    }
+  }
+
+  .phone{
+    font-size: 27px;
+    font-weight: 600;
+    display: block;
+    margin: -5px -10px 0 -1px;
+    @include bp(md){
+      text-align: center;
+    }
+    i{
+      color: #E6323E;
+      font-size: 24px;
+    }
+  }
+}

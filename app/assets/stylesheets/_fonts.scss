@@ -1,0 +1,55 @@
+@import 'icons';
+@import url(https://db.onlinewebfonts.com/c/7e0a3cd758938b211aa2fba1ba2984cc?family=ArianLT-Light);
+@font-face {font-family: "ArianLT-Light";
+    src: url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.eot");
+    src: url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/7e0a3cd758938b211aa2fba1ba2984cc.svg#ArianLT-Light") format("svg");
+}
+
+@font-face {font-family: "FuturaLT";
+    src: url("../fonts/FuturaLT.ttf") format("truetype"),
+}
+
+@font-face {font-family: "FuturaLT-light";
+    src: url("../fonts/FuturaLT-Light.woff2") format("woff2"),
+    url("../fonts/FuturaLT-Light.woff") format("woff"),
+}
+
+@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('../fonts/HelveticaNeueeTextW01-Bold.eot');
+    src: url('../fonts/HelveticaNeueeTextW01-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/HelveticaNeueeTextW01-Bold.woff2') format('woff2'),
+        url('../fonts/HelveticaNeueeTextW01-Bold.woff') format('woff'),
+        url('../fonts/HelveticaNeueeTextW01-Bold.ttf') format('truetype'),
+        url('../fonts/HelveticaNeueeTextW01-Bold.svg#HelveticaNeueeTextW01-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/helvetica-thin/HelveticaNeueCyr-Thin.eot');
+    src: url('../fonts/helvetica-thin/HelveticaNeueCyr-Thin.eot') format('embedded-opentype'),
+        url('../fonts/helvetica-thin/HelveticaNeueCyr-Thin.woff') format('woff'),
+        url('../fonts/helvetica-thin/HelveticaNeueCyr-Thin.ttf') format('truetype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Baskerville Italic';
+    src: url('../fonts/Baskerville Italic.eot');
+    src: url('../fonts/Baskerville Italic.woff2') format('woff2'),
+         url('../fonts/Baskerville Italic.eot?#iefix') format('embedded-opentype');
+    src: url('../fonts/Baskerville-Italic.woff') format('woff'),
+        url('../fonts/Baskerville-Italic.ttf') format('truetype'),
+        url('../fonts/Baskerville-Italic.svg#Baskerville-Italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+// {font-family: 'Overlock', cursive;}

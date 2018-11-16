@@ -1,0 +1,85 @@
+.products-grid{
+    background: #fff;
+    padding: 20px 15px;
+}
+
+.products-grid__item{
+    position: relative;
+    overflow: hidden;
+    display: block;
+    border: 1px solid transparent;
+    margin: 10px 0;
+    img{
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        position: static;
+    }
+    .view{
+        display: block;
+        text-transform: uppercase;
+        position: absolute;
+        transition: .3s;
+        background: rgba(255, 255, 255, 0.677);
+        font-size: 14px;
+        font-family: 'Overlock', cursive;
+        color: #000;
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        bottom: -100%;
+    }
+    &:hover{
+        border: 1px solid #000;
+        text-decoration: none;
+        .view{
+            bottom: 0;
+        }
+    }
+}
+
+.quick-view-popup{
+    background: #fff;
+    position: relative;
+    padding: 25px;
+    .mfp-close{
+        width: 35px;
+        height: 35px;
+        opacity: 1;
+        right: 10px;
+        top: 10px;
+        background: url('../images/icon/delete.png') center no-repeat;
+        background-size: contain;
+        @include bp (xs){
+            right: 0px;
+            top: 0px;
+        }
+    }
+    @include bp (xs){
+        padding: 30px;
+    }
+}
+
+.load-more, .load-more:hover, .load-more:active {
+    width: 22%;
+    padding: 10px;
+    background-color: transparent;
+    border-width: 1;
+    border-color: #AD6290;
+    border-radius: 0;
+    color: #AD6290;
+    display: block;
+    margin: 25px auto;
+    min-width: 120px;
+}
+.load-more, .load-more:hover, .load-more:active {
+    width: 22%;
+    background-color: transparent;
+    border-width: 1;
+    border-color: #AD6290;
+    border-radius: 0;
+    color: #AD6290;
+}
+.zoomContainer{
+  z-index: 10000;
+}
