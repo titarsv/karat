@@ -19147,7 +19147,19 @@ var vendor_lib =
 	    }else if(settings.type ==  'ajax'){
 	        settings.callbacks = {
 	            open: function() {
-	                setTimeout(window.elevateZooInit, 500);
+	                setTimeout(function(){
+	                    window.elevateZooInit();
+	                    var settings = {};
+	                    settings.type = 'inline';
+	                    $('.mfp-content .popup-btn').click(function () {
+	                        $.magnificPopup.open({
+	                            items: {
+	                                src: $('.appointment-popup'),
+	                                type: 'inline'
+	                            }
+	                        }, 0);
+	                    });
+	                }, 1000);
 	            }
 	        };
 	    }

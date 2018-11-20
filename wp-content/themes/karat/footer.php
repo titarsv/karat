@@ -169,6 +169,59 @@
     </div>
 </div>
 
+<div class="mfp-hide">
+    <div id="share-popup" class="share-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 share-popup-container">
+                    <img src="<?php echo get_template_directory_uri();?>/images/icon/share.png" alt="">
+                    <span>Share Post</span>
+                    <div class="share-links">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
+                            <div class="social facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>&via=TWITTER-HANDLE">
+                            <div class="social twitter">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </a>
+                        <a href="https://plus.google.com/share?url=<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>">
+                            <div class="social google">
+                                <i class="fab fa-google-plus-g"></i>
+                            </div>
+                        </a>
+                        <div class="social link popup-btn" data-mfp-src="#share-link-popup">
+                            <i class="fas fa-link"></i>
+                        </div>
+                    </div>
+                    <button title="Close (Esc)" type="button" class="mfp-close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mfp-hide">
+    <div id="share-link-popup" class="share-link-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 share-popup-container">
+                    <img src="<?php echo get_template_directory_uri();?>/images/icon/share.png" alt="">
+                    <span>Share Post</span>
+                    <input type="text" class="share-link-input" value="<?php global $wp; echo home_url( $wp->request ); ?>">
+                    <div class="share-link-popup-btns">
+                        <a href="" class="cancel popup-btn"  data-mfp-src="#share-popup">Cancel</a>
+                        <a href="#" class="copy">Copy Link</a>
+                    </div>
+                    <button title="Close (Esc)" type="button" class="mfp-close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     (function(u,l,o,g,i,n){
         if(typeof l[g] === 'undefined') l[g] = [];
