@@ -107,12 +107,12 @@
                         <div class="col-sm-2 hidden-xs vertical-line"></div>
                         <div class="col-sm-5 col-xs-12">
                             <div id="uLogin" data-ulogin="display=buttons;callback=myfunc">
-                                <a href="#" data-uloginbutton="google" class="login-with facebook">Log in with Facebook</a>
-                                <a href="#" data-uloginbutton="facebook" class="login-with google">Log in with Google+</a>
+                                <a href="#" data-uloginbutton="facebook" class="login-with facebook">Log in with Facebook</a>
+                                <a href="#" data-uloginbutton="google" class="login-with google">Log in with Google+</a>
                             </div>
                         </div>
                         <div class="visible-xs-block col-xs-12">
-                            <a href="" class="popup-btn login-popup__form-notice email" data-mfp-src="#signup-with-email">Sign up with Email</a></p>
+                            <a href="" class="popup-btn login-popup__form-notice email" data-mfp-src="#signup-with-email">Sign up with Email</a>
                         </div>
                         <div class="visible-xs-block col-xs-12">
                             <p class="login-popup__form-notice">Already a member? <a href="" class="popup-btn forget-password-link" data-mfp-src="#login-popup">Log in</a></p>
@@ -210,10 +210,10 @@
                 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 share-popup-container">
                     <img src="<?php echo get_template_directory_uri();?>/images/icon/share.png" alt="">
                     <span>Share Post</span>
-                    <input type="text" class="share-link-input" value="<?php global $wp; echo home_url( $wp->request ); ?>">
+                    <input type="text" id='input' class="share-link-input" value="<?php global $wp; echo home_url( $wp->request ); ?>">
                     <div class="share-link-popup-btns">
                         <a href="" class="cancel popup-btn"  data-mfp-src="#share-popup">Cancel</a>
-                        <a href="#" class="copy">Copy Link</a>
+                        <a href="#" id='bCopy' class="copy">Copy Link</a>
                     </div>
                     <button title="Close (Esc)" type="button" class="mfp-close"></button>
                 </div>

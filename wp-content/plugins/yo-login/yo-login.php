@@ -22,7 +22,7 @@ add_action( 'wp_enqueue_scripts', 'yo_frontend_scripts_method' );
 //add_action( 'admin_enqueue_scripts', 'my_scripts_method' );
 //add_action( 'login_enqueue_scripts', 'my_scripts_method' );
 function yo_frontend_scripts_method(){
-  wp_enqueue_script( 'yo-form', WP_PLUGIN_URL . '/yo-login/js/yo-form.js', array('jquery'));
+  wp_enqueue_script( 'yo-form', '/wp-content/plugins/yo-login/js/yo-form.js', array('jquery'));
 }
 
 // Шорткод вывода формы регистрации

@@ -91,9 +91,12 @@ get_header(); ?>
                 </div>
                 <div class="blog__item-info">
                     <div>
-                        <span class="blog__item-little-text">7 views</span>
+<!--                        <span class="blog__item-little-text">7 views</span>-->
                     </div>
-                    <a href="#" class="blog__item-info-like"><img src="<?php echo get_template_directory_uri();?>/images/icon/heart.png" alt=""></a>
+
+                    <?php wpfp_link() ?>
+
+<!--                    <a href="#" class="blog__item-info-like"><img src="--><?php //echo get_template_directory_uri();?><!--/images/icon/heart.png" alt=""></a>-->
                 </div>
                 <div class="share-icon">
                     <span>•</span>
