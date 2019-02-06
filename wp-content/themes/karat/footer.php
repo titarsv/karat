@@ -222,6 +222,23 @@
     </div>
 </div>
 
+<div class="mfp-hide">
+    <div id="callback-popup" class="share-link-popup">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 share-popup-container">
+                    <form class="contant-form popup-form pbz_form clear-styles" action="" data-error-title="Ошибка отправки!" data-error-message="Please add a valid email." data-success-title="Thanks! Message sent." data-success-message="Thanks! Message sent."><input class="first" name="name" type="text" placeholder="Full Name*" data-title="full name" />
+                        <input class="second" name="email" type="email" placeholder="Email Address*" data-title="Email" data-validate-required="Обязательное поле" data-validate-email="Неправильный email" />
+                        <input name="phone" type="tel" placeholder="Phone Number" data-title="Phone" data-validate-phone="Неправильный номер" />
+                        <textarea name="request" rows="5" placeholder="Write Your Request" data-title="Request"></textarea>
+                        <button class="w100 amt15 amb15" type="submit">Submit Now</button></form>
+                    <button title="Close (Esc)" type="button" class="mfp-close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     (function(u,l,o,g,i,n){
         if(typeof l[g] === 'undefined') l[g] = [];

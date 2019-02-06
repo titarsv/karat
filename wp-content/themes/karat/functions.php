@@ -17,6 +17,7 @@ add_filter( 'get_search_form', 'search_form_modify' );
 
 add_theme_support('widgets');
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'gallery' );
 
 add_filter( 'excerpt_length', function(){
 	return 35;
@@ -46,7 +47,7 @@ function dez_schema_breadcrumb() {
 //schema link
     $schema_link = 'http://data-vocabulary.org/Breadcrumb';
     $home = 'Home';
-    $delimiter = ' &raquo; ';
+    $delimiter = ' / ';
     $homeLink = get_bloginfo('url');
     if (is_home() || is_front_page()) {
 // no need for breadcrumbs in homepage
@@ -54,9 +55,9 @@ function dez_schema_breadcrumb() {
     else {
         echo '<div id="mpbreadcrumbs">';
 // main breadcrumbs lead to homepage
-        if (!is_single()) {
+        /*if (!is_single()) {
             echo 'You are here: ';
-        }
+        }*/
         echo '<span itemscope itemtype="' . $schema_link . '"><a itemprop="url" href="' . $homeLink . '">' . '<span itemprop="title">' . $home . '</span>' . '</a></span>' . $delimiter . ' ';
 // if blog page exists
         if (get_page_by_path('blog')) {
@@ -269,4 +270,303 @@ function quick_view_callback(){
 	}
 
 	wp_die();
+}
+
+add_action('init', 'my_custom_init');
+function my_custom_init(){
+    register_post_type('request', array(
+        'labels'             => array(
+            'name'               => 'Request',
+            'singular_name'      => 'Requests',
+            'add_new'            => 'Add new',
+            'add_new_item'       => 'Add new request',
+            'edit_item'          => 'Edit request',
+            'new_item'           => 'New request',
+            'view_item'          => 'View request',
+            'search_items'       => 'Search request',
+            'not_found'          => 'Not found',
+            'not_found_in_trash' => 'Not found in trash',
+            'parent_item_colon'  => '',
+            'menu_name'          => 'Requests'
+
+        ),
+        'public'             => false,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => false,
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'menu_icon'			 => 'dashicons-email-alt',
+        'supports'           => array('title','editor')
+    ) );
+}
+
+function product_gallery_output( $post ) {
+    $attachments = get_post_meta($post->ID, '_product_image_gallery', 'true');
+    if(!is_array($attachments))
+        $attachments = explode(',', $attachments);
+    wp_nonce_field( 'woocommerce_save_data', 'woocommerce_meta_nonce' );
+    ?>
+    <div id="product_images_container">
+        <ul class="product_images">
+            <?php
+            $update_meta         = false;
+            $updated_gallery_ids = array();
+
+            if ( ! empty( $attachments ) ) {
+                foreach ( $attachments as $attachment_id ) {
+                    $attachment = wp_get_attachment_image( $attachment_id, 'thumbnail' );
+
+                    // if attachment is empty skip.
+                    if ( empty( $attachment ) ) {
+                        $update_meta = true;
+                        continue;
+                    }
+
+                    echo '<li class="image" data-attachment_id="' . esc_attr( $attachment_id ) . '">
+								' . $attachment . '
+								<ul class="actions">
+									<li><a href="#" class="delete tips" data-tip="Delete image">Delete</a></li>
+								</ul>
+							</li>';
+
+                    // rebuild ids to be saved.
+                    $updated_gallery_ids[] = $attachment_id;
+                }
+
+                // need to update product meta to set new gallery ids
+                if ( $update_meta ) {
+                    update_post_meta( $post->ID, '_product_image_gallery', implode( ',', $updated_gallery_ids ) );
+                }
+            }
+            ?>
+        </ul>
+
+        <input type="hidden" id="product_image_gallery" name="product_image_gallery" value="<?php echo esc_attr( implode( ',', $updated_gallery_ids ) ); ?>" />
+
+    </div>
+    <p class="add_product_images hide-if-no-js">
+        <a href="#" data-choose="<?php esc_attr_e( 'Add images to product gallery', 'woocommerce' ); ?>" data-update="<?php esc_attr_e( 'Add to gallery', 'woocommerce' ); ?>" data-delete="<?php esc_attr_e( 'Delete image', 'woocommerce' ); ?>" data-text="<?php esc_attr_e( 'Delete', 'woocommerce' ); ?>"><?php _e( 'Add product gallery images', 'woocommerce' ); ?></a>
+    </p>
+    <style>
+        #product-images .inside #product_images_container {
+            padding: 0 0 0 9px;
+            float: left;
+            width: 100%;
+        }
+        #product-images .inside #product_images_container ul {
+            margin: 0;
+            padding: 0;
+        }
+        #product-images .inside #product_images_container ul::after, #product-images .inside #product_images_container ul::before {
+            content: ' ';
+            display: table;
+        }
+        #product-images .inside #product_images_container ul li.add, #product-images .inside #product_images_container ul li.image, #product-images .inside #product_images_container ul li.wc-metabox-sortable-placeholder {
+            width: 75px;
+            float: left;
+            border: 1px solid #d5d5d5;
+            margin: 9px 9px 0 0;
+            background: #f7f7f7;
+            border-radius: 2px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        #product-images .inside #product_images_container ul li.add img, #product-images .inside #product_images_container ul li.image img, #product-images .inside #product_images_container ul li.wc-metabox-sortable-placeholder img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        #product-images .inside #product_images_container ul ul.actions {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            padding: 2px;
+            display: none;
+        }
+        #product-images .inside #product_images_container ul ul.actions li {
+            float: right;
+            margin: 0 0 0 2px;
+        }
+        #product-images .inside #product_images_container ul ul.actions li a.delete {
+            display: block;
+            text-indent: -9999px;
+            position: relative;
+            height: 1em;
+            width: 1em;
+            font-size: 1.4em;
+        }
+        #product-images .inside .add_product_images {
+            padding: 0 12px 12px;
+        }
+        #product-images .inside #product_images_container ul li:hover ul.actions {
+            display: block;
+        }
+        #product-images .inside #product_images_container ul ul.actions li a.delete::before {
+            font-family: Dashicons;
+            speak: none;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            text-indent: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            content: "";
+            color: #999;
+            background: #fff;
+            border-radius: 50%;
+            height: 1em;
+            width: 1em;
+            line-height: 1em;
+        }
+    </style>
+    <script>
+        jQuery(document).ready(function($){
+            jQuery(document).on('click', '#product-images .inside #product_images_container ul ul.actions li a.delete', function(e){
+                e.preventDefault();
+                $(this).parents('.image').remove();
+            });
+            // Product gallery file uploads.
+            var product_gallery_frame;
+            var $image_gallery_ids = $( '#product_image_gallery' );
+            var $product_images    = $( '#product_images_container' ).find( 'ul.product_images' );
+
+            $( '.add_product_images' ).on( 'click', 'a', function( event ) {
+                var $el = $( this );
+
+                event.preventDefault();
+
+                // If the media frame already exists, reopen it.
+                if ( product_gallery_frame ) {
+                    product_gallery_frame.open();
+                    return;
+                }
+
+                // Create the media frame.
+                product_gallery_frame = wp.media.frames.product_gallery = wp.media({
+                    // Set the title of the modal.
+                    title: $el.data( 'choose' ),
+                    button: {
+                        text: $el.data( 'update' )
+                    },
+                    states: [
+                        new wp.media.controller.Library({
+                            title: $el.data( 'choose' ),
+                            filterable: 'all',
+                            multiple: true
+                        })
+                    ]
+                });
+
+                // When an image is selected, run a callback.
+                product_gallery_frame.on( 'select', function() {
+                    var selection = product_gallery_frame.state().get( 'selection' );
+                    var attachment_ids = $image_gallery_ids.val();
+
+                    selection.map( function( attachment ) {
+                        attachment = attachment.toJSON();
+
+                        if ( attachment.id ) {
+                            attachment_ids   = attachment_ids ? attachment_ids + ',' + attachment.id : attachment.id;
+                            var attachment_image = attachment.sizes && attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
+
+                            $product_images.append( '<li class="image" data-attachment_id="' + attachment.id + '"><img src="' + attachment_image + '" /><ul class="actions"><li><a href="#" class="delete" title="' + $el.data('delete') + '">' + $el.data('text') + '</a></li></ul></li>' );
+                        }
+                    });
+
+                    $image_gallery_ids.val( attachment_ids );
+                });
+
+                // Finally, open the modal.
+                product_gallery_frame.open();
+            });
+
+            // Image ordering.
+            $product_images.sortable({
+                items: 'li.image',
+                cursor: 'move',
+                scrollSensitivity: 40,
+                forcePlaceholderSize: true,
+                forceHelperSize: false,
+                helper: 'clone',
+                opacity: 0.65,
+                placeholder: 'wc-metabox-sortable-placeholder',
+                start: function( event, ui ) {
+                    ui.item.css( 'background-color', '#f6f6f6' );
+                },
+                stop: function( event, ui ) {
+                    ui.item.removeAttr( 'style' );
+                },
+                update: function() {
+                    var attachment_ids = '';
+
+                    $( '#product_images_container' ).find( 'ul li.image' ).css( 'cursor', 'default' ).each( function() {
+                        var attachment_id = $( this ).attr( 'data-attachment_id' );
+                        attachment_ids = attachment_ids + attachment_id + ',';
+                    });
+
+                    $image_gallery_ids.val( attachment_ids );
+                }
+            });
+
+            // Remove images.
+            $( '#product_images_container' ).on( 'click', 'a.delete', function() {
+                $( this ).closest( 'li.image' ).remove();
+
+                var attachment_ids = '';
+
+                $( '#product_images_container' ).find( 'ul li.image' ).css( 'cursor', 'default' ).each( function() {
+                    var attachment_id = $( this ).attr( 'data-attachment_id' );
+                    attachment_ids = attachment_ids + attachment_id + ',';
+                });
+
+                $image_gallery_ids.val( attachment_ids );
+
+                // Remove any lingering tooltips.
+                $( '#tiptip_holder' ).removeAttr( 'style' );
+                $( '#tiptip_arrow' ).removeAttr( 'style' );
+
+                return false;
+            });
+        });
+    </script>
+    <?php
+}
+add_action('add_meta_boxes', 'myplugin_add_custom_box');
+function myplugin_add_custom_box(){
+    add_meta_box( 'product-images', 'Product gallery', 'product_gallery_output', 'product', 'side', 'low' );
+}
+
+function product_gallery_save( $post_id, $post ) {
+    if(!empty($_POST['product_image_gallery'])) {
+        $attachment_ids = isset($_POST['product_image_gallery']) ? explode(',', $_POST['product_image_gallery']) : array();
+        update_post_meta($post_id, '_product_image_gallery', $attachment_ids);
+    }
+}
+add_action( 'save_post', 'product_gallery_save', 20, 2 );
+
+function change_posttype($query) {
+    if(!empty($query->query['category_name']) && $query->query['category_name'] !== 'blog'){
+        set_query_var( 'post_type', 'product' );
+        set_query_var( 'posts_per_page', 20 );
+    }
+}
+add_action('pre_get_posts', 'change_posttype', 1 );
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
+function my_navigation_template( $template, $class ){
+    return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="pagination">%3$s</div>
+	</nav>    
+	';
 }

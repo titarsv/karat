@@ -123,39 +123,59 @@ get_header(); ?>
 ?>
     <section>
         <div class="container products-grid">
+            <div class="breadcrumbs">
+				<?php dez_schema_breadcrumb(); ?>
+            </div>
             <div class="row" id="products_wrap">
-                <?php
-                    foreach( $posts as $post ){
-                        setup_postdata($post); ?>
-                        <div class="col-md-3 col-sm-4 col-xs-12">
-                            <div class="products-grid__item">
-                                <a href="<?php the_permalink(); ?>" class="products-grid__img">
-                                    <?php the_post_thumbnail(array(469, 362), array()); ?>
-                                </a>
-                                <a href="#" data-mfp-src="/wp-admin/admin-ajax.php?action=quick_view&id=<?php the_ID(); ?>" data-type="ajax" class="view popup-btn">Quick view</a>
-                            </div>
-                        </div>
-                    <?php }
-                    wp_reset_postdata();
-                ?>
+                <?php if ( have_posts() ) :
+					while ( have_posts() ) :
+						the_post();
+						?>
+						<div class="col-md-3 col-sm-4 col-xs-12">
+							<div class="products-grid__item">
+								<a href="<?php the_permalink(); ?>" class="products-grid__img">
+									<?php the_post_thumbnail(array(469, 362), array()); ?>
+								</a>
+								<a href="#" data-mfp-src="/wp-admin/admin-ajax.php?action=quick_view&id=<?php the_ID(); ?>" data-type="ajax" class="view popup-btn">Quick view</a>
+							</div>
+						</div>
+					<?php
+					endwhile;
+				endif;
+				?>
                 <div class="col-xs-12">
-                    <button class="button load-more" aria-hidden="false" data-id="<?php echo $term->term_id; ?>" data-page="2"><span data-hook="user-free-text" class="user-free-text">LOAD MORE</span></button>
+                    <!-- <button class="button load-more" aria-hidden="false" data-id="<?php echo $term->term_id; ?>" data-page="2"><span data-hook="user-free-text" class="user-free-text">LOAD MORE</span></button> -->
+					<?php echo str_replace('page-numbers', 'button load-more', get_the_posts_pagination(array(
+                        'prev_next'    => false,
+                    ))); ?>
+                    <!-- <div class="pagination">
+                        <button class="button load-more" aria-hidden="false" data-id="1" data-page="1"><span data-hook="user-free-text" class="user-free-text">1</span></button>
+                        <button class="button load-more" aria-hidden="false" data-id="9" data-page="2"><span data-hook="user-free-text" class="user-free-text">2</span></button>
+                        <button class="button load-more" aria-hidden="false" data-id="18" data-page="3"><span data-hook="user-free-text" class="user-free-text">3</span></button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="category-description">
+                        <?php echo category_description(); ?>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        jQuery(document).ready(function($){
-            $('body').on('click', '.load-more', function(){
-                var $this = $(this);
-                $.post('/wp-admin/admin-ajax.php', {'action':'load_products', 'id':$this.data('id'), 'page':$this.data('page')}, function(response){
-                    $('#products_wrap').append($(response));
-                    $this.parent().remove();
-                });
-            });
-        });
-    </script>
+<!--    <script>-->
+<!--        jQuery(document).ready(function($){-->
+<!--            $('body').on('click', '.load-more', function(){-->
+<!--                var $this = $(this);-->
+<!--                $.post('/wp-admin/admin-ajax.php', {'action':'load_products', 'id':$this.data('id'), 'page':$this.data('page')}, function(response){-->
+<!--                    $('#products_wrap').append($(response));-->
+<!--                    $this.parent().remove();-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 <?php } ?>
 
 <?php get_footer(); ?>

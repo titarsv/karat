@@ -89,27 +89,11 @@ if (array_key_exists('data', $_POST)){
     $msg .= "<h2 style='color:#161616;font-weight:bold;font-size:30px;border-bottom:2px dotted #bd0707;'>New request on the site $domain " . $title . "</h2>" . $eol;
 
     $data = json_decode(str_replace('\"','"',$_POST['data']));
-    $session_data = ['sourse' => 'Поисковая система', 'term' => 'Ключ', 'campaign' => 'Кампания'];
-
-    if (!isset($data->phone) || empty($data->phone->val)) {
-        header("HTTP/1.0 404 Not Found");
-        echo '{"status":"error", "message":"Не заполнено поле телефон"}';
-        die();
-    }
 
     foreach ($data as $key => $params) {
         if (!empty($params->title) && !empty($params->val)) {
             $val = prepare_data($params->val, $key);
             $msg .= "<p><strong>$params->title:</strong> $val</p>" . $eol;
-            if (isset($session_data[$key]))
-                unset($session_data[$key]);
-        }
-    }
-
-    foreach ($session_data as $key => $title) {
-        if (array_key_exists($key, $_SESSION)) {
-            $val = prepare_data($_SESSION[$key], $key);
-            $msg .= "<p><strong>$title:</strong> $val</p>" . $eol;
         }
     }
 	

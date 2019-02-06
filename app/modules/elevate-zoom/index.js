@@ -1777,12 +1777,26 @@ module.exports = function () {
             })( jQuery, window, document );
         };
 
-        elevateZoo();
-        jQuery(".product-container__img img").elevateZoom({zoomType: "inner", cursor: "crosshair"});
+        // elevateZoo();
+        // jQuery(".product-container__img img").elevateZoom({zoomType: "inner", cursor: "crosshair"});
         window.elevateZooInit = function(){
             elevateZoo();
-            jQuery(".product-container__img img").elevateZoom({zoomType: "inner", cursor: "crosshair"});
+            // jQuery(".product-container__img img").elevateZoom({zoomType: "inner", cursor: "crosshair"});
+            jQuery("#image-0").elevateZoom({zoomWindowWidth:300, zoomWindowHeight:300, zoomType: "inner", cursor: "crosshair"});
+            jQuery('.productContainer-img').on('afterChange', function (event, slick, currentSlide) {
+                $('.zoomContainer').remove();
+                if (typeof jQuery.elevateZoom == "undefined") {
+                    elevateZoo();
+                }
+                var slide = jQuery("#image-" + currentSlide);
+                if (slide.hasClass('gallery-image')) {
+                    slide.elevateZoom({zoomWindowWidth:300, zoomWindowHeight:300, zoomType: "inner", cursor: "crosshair"});
+                } else {
+                    $('.zoomContainer').remove();
+                }
+            });
         }
+        window.elevateZooInit();
     });
 
 };

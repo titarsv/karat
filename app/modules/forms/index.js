@@ -386,24 +386,12 @@ module.exports = function() {
     return {
       history: {title: '', val: history.length},
       js_user_agent: {title: '', val: getUserAgent(navigator.userAgent)},
-      get: {title: 'Страница', val: window.location.href},
+      get: {title: 'Page', val: window.location.href},
       referer: {
-        title: 'Заявка пришла со страницы',
+        title: 'Request came from this page',
         val: (typeof document.referrer == 'undefined' ? 'NULL' : document.referrer)
       },
-      host: {title: '', val: host_s},
-      utm_source: {
-        title: 'Поисковая система',
-        val: (typeof(keys['utm_source']) == 'undefined' ? '' : keys['utm_source'])
-      },
-      utm_campaign: {
-        title: 'Кампания',
-        val: (typeof(keys['utm_campaign']) == 'undefined' ? '' : keys['utm_campaign'])
-      },
-      utm_term: {
-        title: 'Ключ',
-        val: (typeof(keys['utm_term']) == 'undefined' ? '' : decodeURIComponent(keys['utm_term']))
-      }
+      host: {title: '', val: host_s}
     };
   }
 

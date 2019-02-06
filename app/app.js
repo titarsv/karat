@@ -104,5 +104,26 @@ $(function() {
       e.preventDefault();
       $('.share-link-input').select();
       document.execCommand('copy');
-  })
+  });
+
+    $('.product-slider').not('.slick-initialized').slick({
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        asNavFor: '.product-nav',
+        arrows: false
+    });
+
+    $('.product-nav').slick({
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        focusOnSelect: true,
+        dots: false,
+        asNavFor: '.product-slider',
+        arrows: false
+    });
 });
